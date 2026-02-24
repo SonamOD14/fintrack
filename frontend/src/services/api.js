@@ -2,18 +2,18 @@ import axios from "axios";
 
 console.log("im here");
 const ApiFromData = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: "http://localhost:3000",
   withCredentials: true,
   headers: {
-    "content-Type": "multipart/form-data"
+    "Content-Type": "multipart/form-data"
   },
 });
 
 const Api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: "http://localhost:3000",
   withCredentials: true,
   headers: {
-    "content-Type": "application/json"
+    "Content-Type": "application/json"
   },
 });
 
@@ -30,7 +30,7 @@ export const forgetPasswordApi = (data) => Api.post("/api/user/forgetPassword", 
 export const resetPasswordApi = (data) => Api.post("/api/user/reset-password", data);
 
 
-export const getallUsersApi = () => Api.get("/api/user/getalluser", config);
+export const getallUsersApi = () => Api.get("/api/user/getalluser", getConfig());
 export const saveTransaction = (data) =>
   Api.post("/api/transaction/", data, getConfig());
 
