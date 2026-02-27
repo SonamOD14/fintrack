@@ -32,13 +32,19 @@ export const resetPasswordApi = (data) => Api.post("/api/user/reset-password", d
 
 export const getallUsersApi = () => Api.get("/api/user/getalluser", getConfig());
 export const saveTransaction = (data) =>
-  Api.post("/api/transaction/", data, getConfig());
+  Api.post("/api/transaction", data, getConfig());
 
 export const getAllTransactions = () =>
   Api.get("/api/transaction/get-all", getConfig());
 
 export const deleteTransaction = (id) =>
-  Api.delete(`/api/transaction/${id}`, getConfig());
+  Api.delete(`/api/transaction/delete/${id}`, getConfig());
 
 export const updateTransaction = (id, data) =>
-  Api.put(`/api/transaction/${id}`, data, getConfig());
+  Api.put(`/api/transaction/update/${id}`, data, getConfig());
+
+export const getTransactionAnalyticsApi = () => 
+  Api.get("/api/transaction/analytics", getConfig());
+ 
+export const getProfileApi = () => Api.get("/api/profile/get", getConfig());
+export const updateProfileApi = (data) => Api.put("/api/profile/update", data, getConfig());
