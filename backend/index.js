@@ -3,8 +3,8 @@ const app = express();
 const { sequelize, connectDB } = require("./db/Database");
 const cors = require("cors");
 app.use(cors({
-  origin: "http://localhost:5173", // Replace with your frontend URL
-  credentials: true,
+  origin: ["http://localhost:5173", "http://localhost:5174"],
+  credentials: true
 }));
 
 //middleware
@@ -12,7 +12,7 @@ app.use(express.json());
 
 // userRoutes
 app.use("/api/user", require('./routes/UserRouter'));
-console.log("in index")
+app.use("/api/profile", require('./routes/ProfileRoutes'));
 app.use("/api/transaction", require("./routes/TransactionRouter"));
 
 // test route
@@ -28,7 +28,7 @@ const startServer = async () => {
   // Load models and relationships
   require("./models/TransactionModel");
 
-  // Sync DB
+  // Sync DB=[]
   await sequelize.sync({ alter: true });
 
   app.listen(PORT, () => {
